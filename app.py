@@ -2,6 +2,7 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from streamlit_option_menu import option_menu
+import pickle
 
 with open('/content/leaf_disease_model.pkl', 'rb') as file:
     model = pickle.load(file)
