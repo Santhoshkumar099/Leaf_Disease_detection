@@ -1,68 +1,71 @@
-# Leaf Disease Detection
+# Leaf Disease Detection🍃
 
-This project implements a deep learning model to detect diseases in plant leaves using image classification techniques.
-
-## Project Overview
-
-The Leaf Disease Detection project aims to assist in the early identification of plant diseases by analyzing images of plant leaves. It uses a Convolutional Neural Network (CNN) to classify leaf images into different disease categories.
+This project is a web application that uses machine learning to detect diseases in plant leaves from uploaded images. It's built with Python, TensorFlow, and Streamlit, and has been deployed on Hugging Face Spaces.
+### App Live : https://huggingface.co/spaces/SanthoshKumar99/Leaf_disease_detection
 
 ## Features
 
-- Image classification of plant leaves into 38 disease categories
-- Custom CNN architecture optimized for performance on limited GPU resources
-- Data augmentation to improve model generalization
-- Detailed model evaluation including accuracy, loss, confusion matrix, and classification report
-- Streamlit web application for easy interaction with the model
+- Upload an image of a plant leaf
+- Predict the disease (if any) affecting the leaf
 
-## Installation
+## Technologies Used
 
-1. Clone this repository:
-   git clone https://github.com/yourusername/leaf-disease-detection.git
-2. Install the required packages:
-    pip install -r requirements.txt
+- Python
+- TensorFlow
+- Streamlit
+- NumPy
+- Streamlit Option Menu
+- keras
+
+## How It Works
+
+1. The application uses a pre-trained convolutional neural network (CNN) model to classify leaf images.
+2. Users can upload an image through the web interface.
+3. The model processes the image and predicts the disease (or health) of the leaf.
+4. The result is displayed to the user.
+
+## Model Details
+
+- The model can identify 38 different classes of leaf conditions, including various diseases and healthy states.
+- It was trained on a dataset of leaf images, achieving high accuracy in disease detection.
+
 ## Usage
 
- ### Training the Model
+To run this project locally:
 
- Prepare your dataset in the following structure:
-   dataset/
-      ├── train/
-      │   ├── class1/
-      │   ├── class2/
-      │   └── ...
-      └── test/
-      ├── class1/
-      ├── class2/
-      └── ...
-  ### Running the Streamlit App
+1. Clone the repository
+2. Install the required dependencies: `pip install -r requirements.txt`
+3. Run the Streamlit app: `streamlit run app.py`
 
-1. Ensure you have the trained model (`leaf_disease_model.h5`) in the correct location.
-2. Run the Streamlit app: streamlit run app.py
-3. Open the provided URL in your web browser.
-4. Upload an image of a leaf to get the disease prediction.
+## Deployment
 
-## Model Performance
+This project is deployed on Hugging Face Spaces. You can access the live application [here](https://huggingface.co/spaces/SanthoshKumar99/Leaf_disease_detection).
 
-- Training Accuracy: 90.9
-- Test Accuracy: 89.4
+## Reference
+* [Python Documentation](https://docs.python.org/3/)
+* [TenssorFlow Documentation](https://www.tensorflow.org/api_docs)
+* [Scikit-learn Documentation](https://scikit-learn.org/0.21/index.html)
+* [Sequential Documentation](https://keras.io/guides/sequential_model/)
+* [Streamlit Documentation](https://docs.streamlit.io/)
 
-For detailed performance metrics, please refer to the model evaluation section in the code.
+## About the Developer
+
+This project was developed by Santhosh Kumar M . You can find more about the developer here:
+
+- GitHub: [https://github.com/Santhoshkumar099](https://github.com/Santhoshkumar099)
+- LinkedIn: [https://www.linkedin.com/in/santhosh-kumar-2040ab188/](https://www.linkedin.com/in/santhosh-kumar-2040ab188/)
+- Email: sksanthoshhkumar99@gmail.com
 
 ## Future Improvements
 
-- Experiment with transfer learning using pre-trained models
-- Implement more advanced data augmentation techniques
-- Collect and incorporate more diverse leaf images to improve model generalization
+- Expand the dataset to include more plant species and diseases
+- Implement real-time disease detection using a device camera
+- Add detailed information about each detected disease and treatment recommendations
 
 ## Contributing
 
-Contributions to this project are welcome. Please fork the repository and submit a pull request with your proposed changes.
+Contributions, issues, and feature requests are welcome.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Dataset source: [Kaggle Leaf Disease Detection Dataset](https://www.kaggle.com/datasets/dev523/leaf-disease-detection-dataset)
-- Thanks to the TensorFlow and Streamlit communities for their excellent tools and documentation.    
+[MIT](https://choosealicense.com/licenses/mit/)
