@@ -2,12 +2,21 @@ import streamlit as st
 import numpy as np
 from streamlit_option_menu import option_menu
 import pickle
-from PIL import Image
 import tensorflow as tf
+import os
+import streamlit as st
 
-# Load the model from the pickle file
-with open('leaf_disease_model.pkl', 'rb') as file:
-    model = pickle.load(file)
+st.write("Current working directory:", os.getcwd())
+st.write("Files in directory:", os.listdir())
+import pickle
+import streamlit as st
+
+try:
+    with open('leaf_disease_model.pkl', 'rb') as file:
+        model = pickle.load(file)
+except Exception as e:
+    st.error(f"Error loading model: {str(e)}")
+    st.stop()
 
 # Model Prediction
 def model_prediction(test_image):
