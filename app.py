@@ -3,6 +3,7 @@ import numpy as np
 from streamlit_option_menu import option_menu
 import pickle
 from PIL import Image
+import tensorflow as tf
 
 # Load the model from the pickle file
 with open('leaf_disease_model.pkl', 'rb') as file:
@@ -12,8 +13,17 @@ with open('leaf_disease_model.pkl', 'rb') as file:
 def model_prediction(test_image):
     image = Image.open(test_image).resize((128, 128))
     input_arr = np.array(image)[np.newaxis, ...]
+    input_arr = input_arr / 255.0  # Normalize the image
     predictions = model.predict(input_arr)
     return np.argmax(predictions)
+
+
+# Set up home page and option menu
+selected = option_menu("Control Panel",
+                        options=["Disease Prediction", "ABOUT"],
+                        icons=["lightbulb", "info-circle"],
+                        default_index=1,
+                        orientation="horizontal")
 
 # Set up home page and option menu
 selected = option_menu("Control Panel",
