@@ -3,3 +3,4 @@ tensorflow
 numpy
 Pillow
 streamlit-option-menu
+pickle
