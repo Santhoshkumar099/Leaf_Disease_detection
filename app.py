@@ -6,17 +6,19 @@ import tensorflow as tf
 import os
 import streamlit as st
 
-st.write("Current working directory:", os.getcwd())
-st.write("Files in directory:", os.listdir())
-import pickle
-import streamlit as st
+import gdown
+import os
 
-try:
-    with open('leaf_disease_model.pkl', 'rb') as file:
-        model = pickle.load(file)
-except Exception as e:
-    st.error(f"Error loading model: {str(e)}")
-    st.stop()
+# Check if the model file exists, if not, download it
+if not os.path.exists('leaf_disease_model.pkl'):
+    url = 'https://drive.google.com/file/d/1ROcmpt9fgeBW7feywJKpxBGdMnxeTcn8/view?usp=drive_link'
+    output = 'leaf_disease_model.pkl'
+    gdown.download(id=url, output=output, quiet=False)
+
+# Now load the model
+with open('leaf_disease_model.pkl', 'rb') as file:
+    model = pickle.load(file)
+
 
 # Model Prediction
 def model_prediction(test_image):
