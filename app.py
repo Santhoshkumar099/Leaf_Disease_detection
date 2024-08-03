@@ -1,45 +1,23 @@
 import streamlit as st
+import tensorflow as tf
 import numpy as np
 from streamlit_option_menu import option_menu
-import pickle
-import tensorflow as tf
-import os
-import streamlit as st
-
-import gdown
-import os
-
-# Check if the model file exists, if not, download it
-if not os.path.exists('leaf_disease_model.pkl'):
-    url = 'https://drive.google.com/file/d/1ROcmpt9fgeBW7feywJKpxBGdMnxeTcn8/view?usp=drive_link'
-    output = 'leaf_disease_model.pkl'
-    gdown.download(id=url, output=output, quiet=False)
-
-# Now load the model
-with open('leaf_disease_model.pkl', 'rb') as file:
-    model = pickle.load(file)
-
 
 # Model Prediction
 def model_prediction(test_image):
-    image = Image.open(test_image).resize((128, 128))
-    input_arr = np.array(image)[np.newaxis, ...]
-    input_arr = input_arr / 255.0  # Normalize the image
+    model = tf.keras.models.load_model("leaf_disease_model (1).keras")
+    image = tf.keras.preprocessing.image.load_img(test_image,target_size=(128,128))
+    input_arr = tf.keras.preprocessing.image.img_to_array(image)
+    input_arr = np.array([input_arr]) 
     predictions = model.predict(input_arr)
-    return np.argmax(predictions)
+    return np.argmax(predictions) 
 
 
-# Set up home page and option menu
-selected = option_menu("Control Panel",
-                        options=["Disease Prediction", "ABOUT"],
-                        icons=["lightbulb", "info-circle"],
-                        default_index=1,
-                        orientation="horizontal")
 
-# Set up home page and option menu
-selected = option_menu("Control Panel",
-                        options=["Disease Prediction", "ABOUT"],
-                        icons=["lightbulb", "info-circle"],
+#set up home page and optionmenu 
+selected = option_menu("Contron Panel",
+                        options=[  "Disease Prediction", "ABOUT"],
+                        icons=[  "lightbulb","info-circle"],
                         default_index=1,
                         orientation="horizontal")
 
