@@ -1,26 +1,24 @@
 import streamlit as st
-import tensorflow as tf
 import numpy as np
 from streamlit_option_menu import option_menu
 import pickle
+from PIL import Image
 
+# Load the model from the pickle file
 with open('leaf_disease_model.pkl', 'rb') as file:
     model = pickle.load(file)
+
 # Model Prediction
 def model_prediction(test_image):
-    #model = tf.keras.models.load_model("leaf_disease_model (1).keras")
-    image = tf.keras.preprocessing.image.load_img(test_image,target_size=(128,128))
-    input_arr = tf.keras.preprocessing.image.img_to_array(image)
-    input_arr = np.array([input_arr]) 
+    image = Image.open(test_image).resize((128, 128))
+    input_arr = np.array(image)[np.newaxis, ...]
     predictions = model.predict(input_arr)
-    return np.argmax(predictions) 
+    return np.argmax(predictions)
 
-
-
-#set up home page and optionmenu 
-selected = option_menu("Contron Panel",
-                        options=[  "Disease Prediction", "ABOUT"],
-                        icons=[  "lightbulb","info-circle"],
+# Set up home page and option menu
+selected = option_menu("Control Panel",
+                        options=["Disease Prediction", "ABOUT"],
+                        icons=["lightbulb", "info-circle"],
                         default_index=1,
                         orientation="horizontal")
 
