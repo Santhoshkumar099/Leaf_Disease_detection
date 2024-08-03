@@ -1,6 +1,5 @@
-streamlit
-tensorflow
-numpy
-Pillow
-streamlit-option-menu
-pickle
+streamlit==1.22.0
+numpy==1.23.5
+streamlit-option-menu==0.3.2
+Pillow==9.5.0
+scikit-learn==1.2.2
